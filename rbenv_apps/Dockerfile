@@ -29,6 +29,4 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /$HOME/.gemrc
 RUN gem install bundler
 RUN rbenv rehash
 
-ENV RAILS_ENV production
-
 RUN adduser --disabled-password --home=/home/apps --gecos "" apps
