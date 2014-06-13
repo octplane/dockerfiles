@@ -12,6 +12,8 @@ RUN su - apps -c 'bundle install'
 RUN su - apps -c './bin/rake db:migrate'
 
 EXPOSE 3000
-USER apps
-
-CMD ./bin/rails server -p 3000
+EXPOSE 22
+### In Dockerfile:
+RUN mkdir /etc/service/rails
+ADD rails.sh /etc/service/rails/run
+RUN chmod +x /etc/service/rails/run
