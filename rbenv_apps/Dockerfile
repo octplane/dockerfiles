@@ -50,5 +50,7 @@ RUN rbenv rehash
 
 RUN adduser --disabled-password --home=/home/apps --gecos "" apps
 
+EXPOSE 22
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
