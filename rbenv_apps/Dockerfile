@@ -22,11 +22,12 @@ RUN cat /tmp/your_key >> /root/.ssh/authorized_keys && rm -f /tmp/your_key
 
 
 # Install deps
-RUN apt-get update && apt-get install -y python-software-properties git curl wget
-RUN apt-get install -y build-essential subversion autoconf libpq-dev libsqlite3-dev libmysqlclient-dev zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+RUN apt-get update
+RUN apt-get install -y wget git build-essential autoconf libpq-dev zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
 
 # Common
 RUN mkdir -p $HOME
+RUN chown 1000:1000 $HOME
 
 # Install rbenv and ruby-build
 RUN git clone https://github.com/sstephenson/rbenv.git      $HOME/.rbenv
@@ -48,9 +49,8 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /$HOME/.gemrc
 RUN gem install bundler
 RUN rbenv rehash
 
-RUN adduser --disabled-password --home=/home/apps --gecos "" apps
-
-EXPOSE 22
+RUN addgroup --gid 1000 apps
+RUN adduser --disabled-password --home=/home/apps --gecos "" --uid 1000 --gid 1000 apps
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
