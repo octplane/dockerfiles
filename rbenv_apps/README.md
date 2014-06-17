@@ -22,3 +22,7 @@ This image is also on docker hub, you can get it :
 docker pull octplane/rbenv
 # docker run -P -d ce59c644822b
 ```
+
+## Changelog
+
+- v1.0.2: removed some unecessary packages at that point.

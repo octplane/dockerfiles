@@ -6,6 +6,7 @@
 FROM phusion/baseimage:0.9.10
 MAINTAINER Pierre Baillet <pierre@baillet.name>
 
+
 # Set correct environment variables.
 ENV HOME /home/apps
 
@@ -19,7 +20,6 @@ CMD ["/sbin/my_init"]
 
 ADD ssh/authorized_keys /tmp/your_key
 RUN cat /tmp/your_key >> /root/.ssh/authorized_keys && rm -f /tmp/your_key
-
 
 # Install deps
 RUN apt-get update
