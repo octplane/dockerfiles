@@ -16,7 +16,7 @@ RUN echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
 
 # Install multiple versions of ruby
 ENV CONFIGURE_OPTS --disable-install-doc
-RUN rbenv install 2.1.3 && rbenv global 2.1.3 
+RUN rbenv install 2.2.2 && rbenv global 2.2.2
 RUN rbenv rehash
 
 # Install Bundler for each version of ruby
